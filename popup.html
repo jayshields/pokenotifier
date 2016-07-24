@@ -3,6 +3,12 @@
   <head>
     <title>Pokénotifier</title>
     <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
@@ -18,9 +24,42 @@
       }
       
       #footer {
+        background-color: #eee;
         margin-top: 10px;
         font-size: 80%;
         color: #444;
+        text-align: center;
+      }
+      
+      #pokemon, #footer {
+        padding: 10px;
+      }
+      
+      h3 {
+        margin: 5px 0;
+      }
+      
+      #footer a, #footer a:hover {
+        text-decoration: none;
+        color: rgba(31,11,58,0.85);
+      }
+      
+      .map-link {
+        display: block;
+        background-color: #333;
+        text-align: center;
+        font-size: 10px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 3px;
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      
+      #loading {
+        padding: 10px;
         text-align: center;
       }
     </style>
@@ -28,8 +67,9 @@
     <script src="popup.js"></script>
   </head>
   <body>
+    <div id="loading"><img src="loading.gif" /></div>
     <div id="pokemon"></div>
     <div id="status"></div>
-    <div id="footer">Brought to you by <a href="https://flauntdigital.com" target="_blank">Flaunt Digital</a>.</div>
+    <div id="footer">Brought to you by <a href="https://flauntdigital.com" target="_blank"><img src="flaunt-icon.png" width="20" /> Flaunt Digital</a></div>
   </body>
 </html>

@@ -25,8 +25,9 @@ function fetchPokemon()
   $.getJSON('https://pokevision.com/map/data/' + lat + '/' + lng, {}, function (data) {
     console.log(data);
     
-    $('#pokemon').html('<h3>Catchable now!</h3><ul id="pokelist" class="catchable"></ul><div class="close-container"><h3>Close by</h3><ul id="pokelist" class="close"></ul><a href="https://pokevision.com/#/@'+lat+','+lng+'" target="_blank">View map</a></div>')
+    $('#pokemon').html('<h3>Catchable now!</h3><ul id="pokelist" class="catchable"></ul><div class="close-container"><h3>Close by</h3><ul id="pokelist" class="close"></ul><a class="map-link" href="https://pokevision.com/#/@'+lat+','+lng+'" target="_blank">View map</a></div>')
     
+    var closehtml = {};
     $.each(data.pokemon, function () {
       var distance = getDistanceFromLatLonInKm(lat, lng, this.latitude, this.longitude);
       var distanceMeters = distance * 100;
@@ -36,7 +37,15 @@ function fetchPokemon()
         $('#pokelist.catchable').append('<li class="p"><img src="https://ugc.pokevision.com/images/pokemon/'+this.pokemonId+'.png" /> '+pokedex[this.pokemonId]+'</li>');
       }
       else
-        $('#pokelist.close').append('<li><img src="https://ugc.pokevision.com/images/pokemon/'+this.pokemonId+'.png" /> '+pokedex[this.pokemonId]+' ('+Math.round(distanceMeters)+'m away)</li>');
+      {
+        closehtml[Math.round(distanceMeters)] = '<li><img src="https://ugc.pokevision.com/images/pokemon/'+this.pokemonId+'.png" /> '+pokedex[this.pokemonId]+' ('+Math.round(distanceMeters)+'m away)</li>';
+      }
+    });
+    
+    var x = 0;
+    Object.keys(closehtml).sort().forEach(function(v, i){
+      if(x++ < 5)
+        $('#pokelist.close').append(closehtml[v]);
     });
     
     if($('#pokelist.catchable li').length === 0)
@@ -44,6 +53,8 @@ function fetchPokemon()
 
     //Update badge
     chrome.browserAction.setBadgeText({text:$('#pokelist.catchable li.p').length+''});
+    
+    $('#loading').remove();
   });
 }
 

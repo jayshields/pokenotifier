@@ -2,8 +2,9 @@
   "manifest_version": 2,
 
   "name": "Pokénotifier",
-  "description": "Get a notification when a Pokémon is nearby.",
-  "version": "1.0",
+  "short_name": "Pokénotifier",
+  "description": "Get a notification when a Pokémon is nearby. Based on the hit game Pokemon Go.",
+  "version": "1.1",
   "author": "Flaunt Digital",
   "homepage_url": "https://flauntdigital.com",
   
@@ -23,10 +24,8 @@
   },
   
   "permissions": [
-    "activeTab",
     "geolocation",
     "notifications",
-    "https://ajax.googleapis.com/",
     "https://pokevision.com/"
   ]
 }
