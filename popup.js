@@ -43,7 +43,7 @@ function fetchPokemon()
     });
     
     var x = 0;
-    Object.keys(closehtml).sort().forEach(function(v, i){
+    Object.keys(closehtml).sort(sortNumber).forEach(function(v, i){
       if(x++ < 5)
         $('#pokelist.close').append(closehtml[v]);
     });
@@ -56,6 +56,10 @@ function fetchPokemon()
     
     $('#loading').remove();
   });
+}
+
+function sortNumber(a,b) {
+    return a - b;
 }
 
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
