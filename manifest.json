@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Pokénotifier: Catchable Pokemon GO notifications",
+  "name": "Pokénotifier: Pokemon GO notifications",
   "short_name": "Pokénotifier",
   "description": "Get a notification when a Pokémon is nearby and ready to catch. Based on the hit game Pokemon Go.",
   "version": "1.4",
